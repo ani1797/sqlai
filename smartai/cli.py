@@ -12,6 +12,6 @@ if __name__ == "__main__":
     else:
         question = sys.argv[1]
         ai = Ollama("http://ollamaapi.localhost")
-        conn = sql.connect("database.sqlite")
+        conn = sql.connect("falcon.sqlite")
         sql = SQL(Path("data_dictionary.csv").read_text(), "sqlite", ai_callback=ai.completion, connection=conn)
         print(sql.ask(question, max_retry = 25))

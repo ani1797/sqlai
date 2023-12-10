@@ -17,7 +17,7 @@ class Ollama():
             'model': model,
             'prompt': message,
             'stream': False
-        }, timeout=120)
+        }, timeout=240)
         return response.json().get('response')
 
     def chat(self, messages: List, model: str = "mistral:latest"):
@@ -25,12 +25,12 @@ class Ollama():
             'model': model,
             'messages': messages,
             'stream': False
-        }, timeout=120)
+        }, timeout=240)
         return response
 
     def embedding(self, text: str, model: str = "mistral:latest"):
         response = httpx.post(f'{self.url}/api/embeddings', json={
             'model': model,
             'prompt': text
-        }, timeout=120)
+        }, timeout=240)
         return response.json().get('embedding')
